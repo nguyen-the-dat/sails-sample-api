@@ -1,16 +1,17 @@
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 const generateResetPasswordEmailTemplate = require("../utils/email.template");
 const sendConfirmOtpWhenCreateAccount = async (emailPayload) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "InDocs.work@gmail.com",
-      pass: "wcum vefc nyuc lekc",
+      user: process.env.GOOGLE_USER,
+      pass: process.env.GOOGLE_PASSWORD,
     },
   });
 
   const mailOptions = {
-    from: "InDocs.work@gmail.com",
+    from: process.env.GOOGLE_USER,
     to: emailPayload.email,
     subject: emailPayload.subject,
     html: generateResetPasswordEmailTemplate(emailPayload.confirmationToken),

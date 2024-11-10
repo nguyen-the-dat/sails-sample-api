@@ -12,7 +12,7 @@
  * For more information on configuring datastores, check out:
  * https://sailsjs.com/config/datastores
  */
-
+require("dotenv").config();
 module.exports.datastores = {
   /***************************************************************************
    *                                                                          *
@@ -48,6 +48,6 @@ module.exports.datastores = {
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
     adapter: "sails-mongo",
-    url: "mongodb://localhost:27017/jira_app",
+    url: process.env.MONGODB_URI,
   },
 };

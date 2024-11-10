@@ -15,10 +15,6 @@ registrationQueue.process(async (job) => {
       subject: subject,
     });
 
-    console.log("trigger event to send email");
-    console.log(job.data);
-    console.log("Email sent successfully");
-
     return Promise.resolve();
   } catch (error) {
     console.error("Error processing job:", error);
